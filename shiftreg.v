@@ -34,3 +34,33 @@ input si,
       sreg<={si,sreg[3:1]};
   end
 endmodule
+
+//PISO//
+
+module piso(
+  input clk,
+input rst,
+  input load,
+  input [3:0] pi,
+  output reg s0);
+  reg [3:0] sreg;
+  
+
+  
+  always @(posedge clk or posedge rst)begin
+    if(rst)
+      sreg<=4'b0000;
+    s0<=1'b0;
+    else begin
+      if (load)begin
+       sreg<=pi;
+       s0<=1'b0
+      end
+      else begin
+        s0<=sreg[0];
+        sreg<={1'b0,sreg[3:1]};
+      end
+    end
+  end
+endmodule
+
