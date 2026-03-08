@@ -64,3 +64,21 @@ input rst,
   end
 endmodule
 
+ // PIPO  //
+module pipo(
+  input clk,
+input rst,
+  input [3:0] pi,
+  output [3:0] s0);
+  reg [3:0] sreg;
+  
+  assign s0=sreg
+  
+  
+  always @(posedge clk or posedge rst)begin
+    if(rst)
+      sreg<=4'b0000;
+    else 
+      sreg<=pi
+  end
+endmodule
