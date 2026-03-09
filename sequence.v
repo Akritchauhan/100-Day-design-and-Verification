@@ -6,7 +6,7 @@ module sequence(
   
   parameter s0=3'b000,s1=3'b001,s2=3'b010,s3=3'011,s4=3'b100;
   
-  bit [3:0] state,n_state;
+  reg [2:0] state,n_state;
   
   always @(posedge clk or posedge rst)begin
     if(rst)begin
