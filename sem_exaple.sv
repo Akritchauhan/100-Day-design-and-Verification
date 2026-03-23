@@ -18,3 +18,13 @@ module sem_example;
       $display("[consumer] Consumed =%0d",q.pop_front());
     end
   endtask
+
+  initial begin
+    sem=new(0);
+    fork
+      producer();
+      consumer();
+    join_any
+    #5 finish;
+  end
+endmodule
