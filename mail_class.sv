@@ -25,3 +25,13 @@ module mailbox_packet_ex;
       #3;
     end
   endtask
+
+  initial begin
+    fork
+      producer();
+      consumer();
+    join_any
+    #100 $finish
+  end
+endmodule
+    
