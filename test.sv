@@ -58,11 +58,18 @@ class environment;
   function new(virtual mem_if vif);
     this.vif=vif;
 
-    gen=new();
-    drv=new(vif);
-    mon=new(vif);
-    scb=new();
+    gen=new(gen2drv);
+    drv=new(vif, gen2drv , mon2scb);
+    mon=new(vif , mon2scb);
+    scb=new(mon2scb);
   endfunction
 
+  task run();
+    fork
+      drv.run();
+      mon.run();
+      scb.run();
+    join_none
+  endtask
 endclass
   
