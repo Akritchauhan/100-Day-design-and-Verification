@@ -50,6 +50,9 @@ class environment;
   monitor mon;
   scoreboard scb;
 
+  mailbox gen2drv;
+  mailbox mon2scb;
+
   virtual mem_if vif;
 
   function new(virtual mem_if vif);
